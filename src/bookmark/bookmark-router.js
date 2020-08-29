@@ -6,7 +6,7 @@ const { bookmarks, lists } = require('../store')
 const bookmarkRouter = express.Router()
 const bodyParser = express.json()
 
-bookmarkRouter.route('/bookmark').get((req, res) => {
+bookmarkRouter.route('/bookmarks').get((req, res) => {
 	res.json(bookmarks);
 }).post(bodyParser, (req, res) => {
 	const { title, url, description, rating } = req.body;
@@ -40,10 +40,10 @@ bookmarkRouter.route('/bookmark').get((req, res) => {
 	bookmarks.push(bookmark);
 
 	logger.info(`Bookmark with id ${id} created`);
-	res.status(201).location(`http://localhost:8000/bookmark/${id}`).json(bookmark);
+	res.status(201).location(`http://localhost:8000/bookmarks/${id}`).json(bookmark);
 })
 
-bookmarkRouter.route('/bookmark/:id').get((req, res) => {
+bookmarkRouter.route('/bookmarks/:id').get((req, res) => {
 	const { id } = req.params;
 	const bookmark = bookmarks.find(b => b.id == id);
 
