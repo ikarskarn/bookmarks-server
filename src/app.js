@@ -35,7 +35,7 @@ app.use(bookmarkRouter)
 app.use(listRouter)
 
 app.get('/', (req, res) => {
-    res.send('Hello, booksmarks!');
+    res.send('Hello, world!');
 })
 
 app.use(function errorHandler(error, req, res, next) {
